@@ -1,4 +1,4 @@
-module github.com/kazz187/gh-deploy
+module github.com/showcase-gig-platform/gh-deploy
 
 go 1.17
 

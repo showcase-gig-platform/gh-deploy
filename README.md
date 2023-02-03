@@ -15,7 +15,7 @@ https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 ## インストール
 
 ```bash
-go install github.com/showcase-gig-platform/gh-deploy
+go install github.com/showcase-gig-platform/gh-deploy@latest
 ```
 
 ## 実行方法
