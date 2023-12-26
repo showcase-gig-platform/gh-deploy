@@ -55,6 +55,17 @@ func (gdr *GhDeployRunner) preRun(c *cobra.Command, args []string) {
 	}
 
 	if gdr.Environment == "production" {
+		// Tagの先頭がprdでない場合は確認を促す
+		if !strings.HasPrefix(gdr.Tag, "prd") {
+			colorstring.Printf("[yellow]CAUTION: Tag name is not start with prd. Do you want to continue? [y/N]: ")
+			s := bufio.NewScanner(os.Stdin)
+			s.Scan()
+			t := s.Text()
+			if t != "y" && t != "Y" {
+				colorstring.Println("[red]This deployment was canceled.")
+				os.Exit(0)
+			}
+		}
 		colorstring.Print("[yellow]CAUTION: You will create a new deployment in production environment. Do you want to continue? [y/N]: ")
 		s := bufio.NewScanner(os.Stdin)
 		s.Scan()
